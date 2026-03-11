@@ -7,6 +7,7 @@ on:
     branches:
       - main
       - release/**
+      - 56098
   workflow_dispatch:
 
 jobs:
@@ -17,20 +18,20 @@ jobs:
       - name: Run Trivy Locally
         uses: docker://aquasec/aqua-scanner
         with:
-          args: trivy fs --sast --reachability --package-json --dotnet-proj \
+          args:  trivy fs --sast --reachability --package-json --dotnet-proj \
                   --db-repository=registry.aquasec.com/trivy-db:2 \
                   --checks-bundle-repository=registry.aquasec.com/trivy-checks:1 \
                   --scanners vuln,misconfig,secret \
-                  --java-db-repository=registry.aquasec.com/trivy-java-db:1 .
+                  --java-db-repository=registry.aquasec.com/trivy-java-db:1 -d  .
           # To customize which severities to scan for, add: --severity UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
           # To enable SAST scanning, add: --sast
           # To enable reachability scanning, add: --reachability
           # To enable npm/dotnet/gradle non-lock file scanning, add: --package-json / --dotnet-proj / --gradle
           # Update Comments
         env:
-          AQUA_KEY: ${{ secrets.AQUASEC_API_KEY }}
-          AQUA_SECRET: ${{ secrets.AQUASEC_API_SECRET }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AQUA_KEY: ${{ secrets.AQUA_KEY }}
+          AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           TRIVY_RUN_AS_PLUGIN: aqua
           TRIVY_USERNAME: ${{ secrets.AQUASEC_REGISTRY_USER_ID }}
           TRIVY_PASSWORD: ${{ secrets.AQUASEC_REGISTRY_PASSWORD }}
@@ -49,7 +50,7 @@ jobs:
               BINDIR="." sh install.sh
               rm install.sh install.sh.checksum
               ./billy generate \
-               --access-token "${{ secrets.GITHUB_TOKEN }}" \
+               --access-token "${{ secrets.TOKEN_GITHUB }}" \
                --aqua-key "${{ secrets.AQUA_KEY }}" \
                --aqua-secret "${{ secrets.AQUA_SECRET }}" \
                --cspm-url https://eu-1.api.cloudsploit.com \
@@ -62,4 +63,4 @@ jobs:
         env:
           AQUA_KEY: ${{ secrets.AQUASEC_API_KEY }}
           AQUA_SECRET: ${{ secrets.AQUASEC_API_SECRET }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

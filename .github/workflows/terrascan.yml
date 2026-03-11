@@ -1,4 +1,7 @@
-on: [push]
+on:
+  push:
+    - release/* 
+
 
 jobs:
   terrascan_terraform_job:

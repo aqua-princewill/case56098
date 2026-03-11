@@ -29,8 +29,8 @@ jobs:
           # To enable npm/dotnet/gradle non-lock file scanning, add: --package-json / --dotnet-proj / --gradle
           # Update Comments
         env:
-          AQUA_KEY: ${{ secrets.AQUASEC_API_KEY }}
-          AQUA_SECRET: ${{ secrets.AQUASEC_API_SECRET }}
+          AQUA_KEY: ${{ secrets.AQUA_KEY }}
+          AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           TRIVY_RUN_AS_PLUGIN: aqua
           TRIVY_USERNAME: ${{ secrets.AQUASEC_REGISTRY_USER_ID }}
@@ -63,4 +63,4 @@ jobs:
         env:
           AQUA_KEY: ${{ secrets.AQUASEC_API_KEY }}
           AQUA_SECRET: ${{ secrets.AQUASEC_API_SECRET }}
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

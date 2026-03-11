@@ -26,6 +26,12 @@ jobs:
     name: SBOM generation
     runs-on: ubuntu-latest
     steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: verify checkout
+        run: |
+          pwd
+          ls -la
       - name: Run Trivy Locally
         uses: docker://aquasec/aqua-scanner
         with:

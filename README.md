@@ -60,3 +60,4 @@ Docker is typically the easiest way to get started because you don't need to ins
 3. `path/to/terrascan scan -t aws`
 
 
+Test the PR fix

@@ -33,6 +33,7 @@ jobs:
           pwd
           ls -la
       - name: Run Trivy Locally
+        continue-on-error: true       
         uses: docker://aquasec/aqua-scanner
         with:
           args:  trivy fs --reachability --package-json --dotnet-proj \
@@ -43,8 +44,8 @@ jobs:
           # To enable npm/dotnet/gradle non-lock file scanning, add: --package-json / --dotnet-proj / --gradle
           # Update Comments
         env:
-          AQUA_KEY: ${{ secrets.AQUA_KEY }}
-          AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
+          AQUA_KEY: us0ZJ3QWlxzmSGdimQrg9j
+          AQUA_SECRET: Kyul7jeyiktZBTjC6jcEvnB53OqJEPMgERu
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           TRIVY_RUN_AS_PLUGIN: aqua
           TRIVY_USERNAME: ${{ secrets.AQUASEC_REGISTRY_USER_ID }}

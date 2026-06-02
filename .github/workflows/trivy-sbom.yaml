@@ -98,8 +98,8 @@ jobs:
           rm install.sh install.sh.checksum
           ./billy generate \
             --access-token "${{ secrets.GITHUB_TOKEN }}" \
-            --aqua-key WyKzqHQpnmO5tohpf3zcfy \
-            --aqua-secret ZOpr71Eu4ubcMXaulFWM2O97IVH856GNq2h \
+            --aqua-key us0ZJ3QWlxzmSGdimQrg9j \
+            --aqua-secret Kyul7jeyiktZBTjC6jcEvnB53OqJEPMgERu \
             --cspm-url https://eu-1.api.cloudsploit.com \
             --artifact-path . 
 

@@ -86,6 +86,8 @@ jobs:
       #     AQUA_SECRET: ${{ secrets.AQUASEC_API_SECRET }}
       #     GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: Manifest Generation
+        env:
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           export BILLY_SERVER=https://billy.eu-1.codesec.aquasec.com
           curl -sLo install.sh download.codesec.aquasec.com/billy/install.sh

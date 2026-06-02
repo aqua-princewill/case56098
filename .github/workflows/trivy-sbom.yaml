@@ -36,8 +36,8 @@ jobs:
         continue-on-error: true       
         uses: docker://aquasec/aqua-scanner
         with:
-          args:  trivy fs --reachability --package-json --dotnet-proj \
-                  --scanners vuln,misconfig,secret  --secret-config trivy-secret-rules.yaml  .
+          args:  trivy fs --reachability --sast --package-json --dotnet-proj \
+                  --scanners vuln,misconfig,secret  --secret-config trivy-secret-rules.yaml   .
           # To customize which severities to scan for, add: --severity UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
           # To enable SAST scanning, add: --sast
           # To enable reachability scanning, add: --reachability

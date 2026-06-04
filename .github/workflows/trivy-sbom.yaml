@@ -85,6 +85,15 @@ jobs:
       #     AQUA_KEY: ${{ secrets.AQUASEC_API_KEY }}
       #     AQUA_SECRET: ${{ secrets.AQUASEC_API_SECRET }}
       #     GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - name: Debug PR context
+        run: |
+          echo "EVENT_NAME: $GITHUB_EVENT_NAME"
+          echo "REF: $GITHUB_REF"
+          echo "HEAD_REF: $GITHUB_HEAD_REF"
+          echo "BASE_REF: $GITHUB_BASE_REF"
+          echo "SHA: $GITHUB_SHA"
+          echo "PR HEAD SHA: ${{ github.event.pull_request.head.sha }}"
+          echo "PR NUMBER: ${{ github.event.pull_request.number }}"
       - name: Manifest Generation
         env:
           GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}

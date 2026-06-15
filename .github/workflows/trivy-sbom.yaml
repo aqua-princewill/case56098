@@ -55,6 +55,7 @@ jobs:
           AQUA_URL: https://api.eu-1.supply-chain.cloud.aquasec.com
           CSPM_URL: https://eu-1.api.cloudsploit.com
           AQUA_PRESERVE_RESOLVED_COMMENTS: true
+
       # - name: Generate SBOM Locally
       #   id: generate-sbom-local
       #   run: |

@@ -34,7 +34,7 @@ jobs:
           ls -la
       - name: Run Trivy Locally
         continue-on-error: true       
-        uses: docker://aquasec/aqua-scanner
+        uses: docker://codedibia/aqua-scanner:dev
         with:
           args:  trivy fs --reachability --sast --package-json --dotnet-proj \
                   --scanners vuln,misconfig,secret  --secret-config trivy-secret-rules.yaml   .
@@ -51,7 +51,8 @@ jobs:
           TRIVY_USERNAME: ${{ secrets.AQUASEC_REGISTRY_USER_ID }}
           TRIVY_PASSWORD: ${{ secrets.AQUASEC_REGISTRY_PASSWORD }}
           AQUA_URL: https://api.eu-1.supply-chain.cloud.aquasec.com
-          CSPM_URL: https://eu-1.api.cloudsploit.com 
+          CSPM_URL: https://eu-1.api.cloudsploit.com
+          AQUA_PRESERVE_RESOLVED_COMMENTS: true
       # - name: Generate SBOM Locally
       #   id: generate-sbom-local
       #   run: |
